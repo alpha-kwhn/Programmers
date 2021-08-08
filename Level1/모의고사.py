@@ -1,5 +1,5 @@
 answers = [1, 3, 2, 4, 2]
-
+counts = [0, 0, 0]
 def solution(answers):
     a = [1, 2, 3, 4, 5]
     b = [2, 1, 2, 3, 2, 4, 2, 5]
@@ -12,15 +12,28 @@ def solution(answers):
 
     for i in range(length):
         if a[i%5] == answers[i]:
+            counts[0] += 1
             a_point += 1
 
     for i in range(length):
         if b[i%8] == answers[i]:
+            counts[1] += 1
             b_point += 1
 
     for i in range(length):
         if c[i%10] == answers[i]:
+            counts[2] += 1
             c_point += 1
+
+    winner = []
+    for i in range(3):
+        if counts[i] == max(counts):
+            winner.append(i)
+
+
+
+
+
 
     liste = [a_point, b_point, c_point]
     answer = []

@@ -41,8 +41,5 @@ def solution(board, moves):
     answer = count - len(result)
     return answer
 
-
-
-
 did = solution(board, moves)
 print(did)
