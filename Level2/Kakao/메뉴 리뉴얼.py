@@ -10,6 +10,7 @@ def solution(orders, course):
         tmp = list(orders[i])
         tmp.sort()
         orders[i] = ''.join(tmp)
+    #문자열 오름차순 정렬 시행
 
     answer = []
     for i in orders:
@@ -20,18 +21,18 @@ def solution(orders, course):
             ncr = list(map(''.join, combinations(lis, course[p])))
             if len(ncr) != 0:
                 answer.append(ncr)
+    #모든 주문의 조합 생성
+
     lit = []
     for i in answer:
         lit += i
     lit.sort(key = len)
+    #리스트 합쳐서 단일화
 
-    for i in lit:
+    for i in lit[:]:
         if lit.count(i) < 2:
             lit.remove(i)
-
-    for i in lit:
-        if lit.count(i) < 2:
-            lit.remove(i)
+    #갯수가 2개 미만인 요소들은 전부 지우기 (복사본을 이용)
 
     big = [0] * len(course)
     te = 0
@@ -42,11 +43,12 @@ def solution(orders, course):
             te += 1
             pear = i + 1
     big[te] = lit[pear:]
+    #코스요리 길이별로 나눠서 리스트에 저장
 
-    if 0 in big:
-        big.remove(0)
-    if 0 in big:
-        big.remove(0)
+    for i in big[:]:
+        if i == 0:
+            big.remove(0)
+    #리스트에 0이 존재한다면 0을 다 삭제해야함
 
     for i in range(len(big)):
         remain = []
@@ -62,14 +64,17 @@ def solution(orders, course):
                 maxi = big[i].count(big[i][j])
                 remain.append(big[i][j])
         big[i] = remain
+    #각 길이별 코스요리 중에서 주문횟수가 가장 많았던 것들만 남기고 나머지는 다 삭제
 
     for i in range(len(big)):
         big[i] = list(set(big[i]))
+    #중복 요소 제거
 
     final = []
     for i in range(len(big)):
         final += big[i]
     final.sort()
+    #리스트를 전부 합친 후 오름차순 정렬
 
     return final
 
