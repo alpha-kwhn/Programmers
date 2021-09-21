@@ -1,30 +1,47 @@
 arr = [[1,1,1,1,1,1,1,1],[0,1,1,1,1,1,1,1],[0,0,0,0,1,1,1,1],[0,1,0,0,1,1,1,1],[0,0,0,0,0,0,1,1],[0,0,0,0,0,0,0,1],[0,0,0,0,1,0,0,1],[0,0,0,0,1,1,1,1]]
 
+#전체적인 과정을 재귀호출 방식을 통해 분해하면서 그때 그때 문제의 조건에 맞게 합쳐주는 작업을 하였다
 def solution(arr):
-    answer = []
-    for i in range(0, len(arr), 2):
-        total = []
-        lis = []
-        for q in range(i, i+2):
-            for j in range(i, i+2):
-                lis.append(arr[q][j])
-            if lis.count(1) == 0:
-                total.append([0])
-            elif lis.count(0) == 0:
-                total.append([1])
+    result = []
+    def BFS(arr, middle):
+        turn = []
+        if middle != 1:
+            for p in arr:
+                for o in p:
+                    turn.append(o)
+            if 1 not in turn:
+                result.append([0])
+            elif 0 not in turn:
+                result.append([1])
             else:
-                total.append(lis)
-
-        flag = 0
-        for o in range(1, len(total)):
-            if total[0] != total[o]:
-                flag = 1
-                break
-        if flag == 1:
-            answer.append(total)
+                check = []
+                check2 = []
+                check3 = []
+                check4 = []
+                for j in range(middle):
+                    check.append(arr[j][:middle])
+                    check2.append(arr[j+middle][:middle])
+                    check3.append(arr[j][middle:])
+                    check4.append(arr[j+middle][middle:])
+                BFS(check, middle // 2)
+                BFS(check2, middle // 2)
+                BFS(check3, middle // 2)
+                BFS(check4, middle // 2)
         else:
-            answer.append(total[0])
-    return answer
+            for p in arr:
+                for o in p:
+                    turn.append(o)
+            if 1 not in turn:
+                result.append([0])
+            elif 0 not in turn:
+                result.append([1])
+            else:
+                result.append(turn)
+    BFS(arr, len(arr) // 2)
+    con = []
+    for i in result:
+        con += i
+    return [con.count(0), con.count(1)]
 
 
 did = solution(arr)
