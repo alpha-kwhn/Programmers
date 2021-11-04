@@ -23,6 +23,7 @@ def solution(skill, skill_trees):
             if tmp == anl[j] and correct[j] != -1:
                 count += 1
                 correct[j] = -1
+
     for j in anl:
         pri = 0
         for k in range(len(j)):

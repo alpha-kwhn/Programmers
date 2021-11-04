@@ -3,6 +3,7 @@ name1 = "JAN"
 name2 = "ABAAAAAAAAABB"
 name3 = "BBBAAB"
 
+
 def solution(name):
     alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S'
         , 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']

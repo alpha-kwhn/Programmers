@@ -17,21 +17,24 @@ def solution(expression):
         stack = []
         for i in t:
             for j in tap:
-                stack.append(j)
-                if stack[-2] == i:
+                if len(stack) == 0:
+                    stack.append(j)
+                elif stack[-1] == i:
                     if i == '*':
-                        compute = stack.pop() * stack.pop(-2)
+                        compute = int(stack.pop(-2)) * int(j)
                         stack.pop()
                         stack.append(compute)
                     elif i == '+':
-                        compute = stack.pop() + stack.pop(-2)
+                        compute = int(stack.pop(-2)) + int(j)
                         stack.pop()
                         stack.append(compute)
                     elif i == '-':
-                        compute = stack.pop() - stack.pop(-2)
+                        compute = int(stack.pop(-2)) - int(j)
                         stack.pop()
                         stack.append(compute)
-                print(stack)
+                    print(stack)
+                else:
+                    stack.append(j)
         answer.append(stack)
     return answer
 
