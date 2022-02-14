@@ -5,8 +5,6 @@ dungeons = [[80,20],[50,40],[30,10]]
 
 def solution(k, deongeons):
     lis = list(permutations(dungeons, len(dungeons)))
-    #print(lis)
-
     able = []
 
     for i in range(len(lis)):
