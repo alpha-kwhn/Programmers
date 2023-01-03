@@ -32,18 +32,17 @@ def solution(board):
                 result = 0
                 for j in range(u, u+i):
                     for p in range(q, q+i):
-                        if board[j][p] == 1:
+                        if board[j][p] == 0:
+                            break
+                        else:
                             result += board[j][p]
                         if result == i*i:
                             all.append(result)
-                        elif board[j][p] == 0:
-                            result = 0
-                            break
-        total.append(all)
+        if len(all) != 0:
+            total.append(all)
     newer = total[0]
     for i in range(1, len(total)):
         newer.extend(total[i])
-    print(newer)
 
     for i in range(len(ans)):
         if ans[i] not in newer:

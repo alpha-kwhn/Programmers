@@ -1,6 +1,8 @@
 import heapq
+
 scoville = [1, 2, 3, 9, 10, 12]
 k = 15
+
 
 def solution(scoville, k):
     heapq.heapify(scoville) #리스트를 힙으로 만들어준다

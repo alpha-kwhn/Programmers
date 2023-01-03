@@ -1,5 +1,5 @@
-str1 = "12444"
-str2 = "4456788"
+str1 = "aa1+aa2"
+str2 = "AAAA12"
 
 def solution(str1, str2):
     first = 0
@@ -54,6 +54,8 @@ def solution(str1, str2):
     for i in hap:
         if i.isalpha():
             real_hap.append(i)
+    print(real_kyo)
+    print(real_hap)
 
     if len(real_kyo) == 0 and len(real_hap) == 0:
         return 65536
