@@ -38,7 +38,7 @@ def solution(storey):
             else:
                 answer += (1 + (10 - int(str(((firstNum) * (10 ** (lengths))))[0])))
 
-            return answer
+        return answer
 
 
 print(solution(88))
