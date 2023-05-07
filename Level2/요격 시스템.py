@@ -1,5 +1,5 @@
 def solution(targets):
-    
+
     # 시작 x좌표 기준으로 오름차순 정렬하기
     targets.sort(key=lambda x: (x[0], x[1]))
     lis = [[targets[0][0] + 0.1, targets[0][1] - 0.1]]
