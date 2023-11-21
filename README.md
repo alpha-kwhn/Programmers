@@ -1,3 +1,3 @@
 # Programmers CodingTest
 
-차근차근 하나하나씩
+차근차근 하나하나
