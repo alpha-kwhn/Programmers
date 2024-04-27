@@ -1,0 +1,8 @@
+SELECT A.ID, B.FISH_NAME, A.LENGTH
+FROM FISH_INFO A JOIN FISH_NAME_INFO B USING(FISH_TYPE)
+WHERE (A.LENGTH, A.FISH_TYPE) IN (SELECT MAX(LENGTH), FISH_TYPE 
+                                FROM FISH_INFO
+                                GROUP BY FISH_TYPE)
+ORDER BY A.ID;
+
+-- 여러 조건 한 번에 비교시 (A, B) IN (SELECT A, B ...)를 사용해보자
